@@ -17,7 +17,7 @@
     &mt LCTRL A &mt LALT S &lt NAV D &lt SYMB F &kp G                     &kp H     &lt SYMB J &kp K    &mt LALT L &mt RSHFT ENTER
     &kp Z     &kp X    &kp C     &lt NUM V     &kp B                      &kp N     &kp M     &kp COMMA &kp DOT   &kp SQT
               &kp TAB &kp GRAVE                                                               &kp BSPC  &kp ESC
-                                 &mt LSHFT SPC &kp LGUI                   &lt NAV SEMI &lt SYMB ENTER
+                                 &mt LSHFT SPC &kp LGUI                   &lt NAV SEMI &lt SYMB SPC
                                             &kp LCTRL &kp LALT &kp C_MUTE &lt NAV TAB
                                             &kp C_PP &kp C_NEXT &kp C_VOL_UP &kp C_VOL_DN
             >;
