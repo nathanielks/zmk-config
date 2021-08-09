@@ -33,29 +33,29 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (dactyl_manuform_4x5 Left)
-        run: west build -s zmk/app -b nice_nano -- -DSHIELD=dactyl_manuform_4x5_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: dactyl_manuform_4x5 DTS File
+      - name: West Build (tbk_mini Left)
+        run: west build -s zmk/app -b nice_nano -- -DSHIELD=tbk_mini_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: tbk_mini DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/nice_nano.dts.pre.tmp
-      - name: dactyl_manuform_4x5 Left Kconfig file
+      - name: tbk_mini Left Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 dactyl_manuform_4x5_left_nice_nano.uf2
-      - name: Archive (dactyl_manuform_4x5 Left)
+        run: cp build/zephyr/zmk.uf2 tbk_mini_left_nice_nano.uf2
+      - name: Archive (tbk_mini Left)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: dactyl_manuform_4x5_left_nice_nano.uf2
-      - name: West Build (dactyl_manuform_4x5 Right)
-        run: west build --pristine -s zmk/app -b nice_nano -- -DSHIELD=dactyl_manuform_4x5_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+          path: tbk_mini_left_nice_nano.uf2
+      - name: West Build (tbk_mini Right)
+        run: west build --pristine -s zmk/app -b nice_nano -- -DSHIELD=tbk_mini_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
 
-      - name: dactyl_manuform_4x5 Right Kconfig file
+      - name: tbk_mini Right Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 dactyl_manuform_4x5_right_nice_nano.uf2
-      - name: Archive (dactyl_manuform_4x5 Right)
+        run: cp build/zephyr/zmk.uf2 tbk_mini_right_nice_nano.uf2
+      - name: Archive (tbk_mini Right)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: dactyl_manuform_4x5_right_nice_nano.uf2
+          path: tbk_mini_right_nice_nano.uf2
