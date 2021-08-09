@@ -27,20 +27,20 @@
         default_layer {
             bindings = <
     &kp Q     &kp W    &kp E     &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O     &kp P
-    &hm LCTRL A &hm LALT S &lt NAV D &lt SYMB F &kp G                     &kp H     &kp J     &kp K     &kp L     &mt RSHFT ENTER
-    &kp Z     &kp X    &kp C     &lt NUM V     &kp B                      &kp N     &kp M     &kp COMMA &kp DOT   &kp SQT
-              &kp TAB &lt BLUE GRAVE                                                          &kp BSPC  &kp ESC
-                                 &mt LSHFT SPC &kp LGUI                   &lt NAV SEMI &lt SYMB SPC
-                                            &kp LCTRL &kp LALT &kp C_MUTE &lt NAV TAB
+    &hm LCTRL A &hm LALT S &lt NAV D &lt SYMB F &kp G                     &kp H     &kp J     &kp K     &kp L     &hm RSHFT ENTER
+    &kp Z     &kp X    &kp C     &lt NUM V     &kp B                      &kp N     &kp M     &kp COMMA &kp DOT   &none
+              &kp TAB &lt BLUE GRAVE                                                          &kp BSPC  &none
+                                 &hm LSHFT ESC &hm LGUI ENTER                      &lt NUM SEMI &lt SYMB SPC
+                                            &kp LALT &kp LCTRL  &kp C_MUTE   &lt NAV TAB
                                             &kp C_PP &kp C_NEXT &kp C_VOL_UP &kp C_VOL_DN
             >;
         };
 
         symbols {
             bindings = <
-    &none     &kp CARET &kp MINUS &kp EQUAL &none                         &none     &kp LBKT  &kp RBKT  &kp STAR  &none
-    &kp ESC   &kp GRAVE &kp EXCL  &kp AT    &none                         &none     &kp LPAR  &kp RPAR  &kp SEMI  &trans
-    &none     &kp HASH  &kp PRCNT &kp DLLR  &none                         &none     &kp BSLH  &kp AMPS  &kp FSLH  &trans
+    &none     &kp EXCL  &kp AMPS  &kp STAR  &kp CARET                     &kp GRAVE &kp FSLH  &kp LPAR  &kp RPAR  &none
+    &trans    &kp AT    &kp MINUS &kp EQUAL &none                         &trans    &kp SQT   &kp LBKT  &kp RBKT  &trans
+    &none     &kp HASH  &kp PRCNT &kp DLLR  &none                         &trans    &kp BSLH  &trans    &trans    &trans
               &trans    &trans                                                                &trans    &trans
                                   &trans    &trans                        &trans    &trans
                                             &trans    &trans    &trans    &trans
@@ -50,7 +50,7 @@
 
         navi {
             bindings = <
-    &none     &none     &none     &none     &none                         &none     &kp DEL   &kp BSPC  &none     &none
+    &none     &none     &none     &none     &trans                        &trans    &kp DEL   &kp BSPC  &none     &none
     &kp LSHFT &kp GRAVE &none     &kp TAB   &none                         &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans
     &none     &none     &none     &none     &none                         &none     &none     &none     &none     &trans
               &trans    &trans                                                                &trans    &trans
@@ -62,9 +62,9 @@
 
         numbers {
             bindings = <
-    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0
-    &none     &none     &none     &none     &none                         &kp MINUS &kp N4    &kp N5    &kp N6    &kp FSLH
-    &none     &none     &none     &none     &none                         &kp EQUAL &kp N1    &kp N2    &kp N3    &kp STAR
+    &none     &kp N7    &kp N8    &kp N9    &kp N0                        &none     &kp N7    &kp N8    &kp N9    &kp N0
+    &none     &kp N3    &kp N4    &kp N5    &none                         &kp MINUS &kp N4    &kp N5    &kp N6    &kp FSLH
+    &none     &kp N1    &kp N2    &kp N3    &none                         &kp EQUAL &kp N1    &kp N2    &kp N3    &kp STAR
               &trans    &trans                                                                &trans    &kp DOT
                                   &trans    &trans                        &trans    &trans
                                             &trans    &trans    &trans    &trans
