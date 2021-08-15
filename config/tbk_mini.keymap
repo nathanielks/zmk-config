@@ -44,16 +44,16 @@
 
         navi {
             bindings = <
-    &trans &none     &none     &none     &none     &trans                        &trans    &kp DEL   &kp BSPC  &none     &none  &trans 
+    &trans &none     &none     &none     &none     &trans                        &trans    &none     &kp DEL   &none     &none  &trans 
     &trans &kp LSHFT &kp GRAVE &none     &kp TAB   &none                         &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans 
-    &trans &none     &none     &none     &none     &none                         &none     &none     &none     &none     &trans &trans 
+    &trans &none     &none     &none     &none     &none                         &none     &none     &kp BSPC  &none     &trans &trans 
                                &trans    &trans    &trans                        &trans    &trans    &trans
             >;
         };
 
         numbers {
             bindings = <
-    &trans &none     &kp N7    &kp N8    &kp N9    &kp N0                        &none     &kp N7    &kp N8    &kp N9    &kp N0   &trans 
+    &trans &none     &kp N7    &kp N8    &kp N9    &kp N0                        &kp DOT   &kp N7    &kp N8    &kp N9    &kp N0   &trans 
     &trans &none     &kp N3    &kp N4    &kp N5    &none                         &kp MINUS &kp N4    &kp N5    &kp N6    &kp FSLH &trans 
     &trans &none     &kp N1    &kp N2    &kp N3    &none                         &kp EQUAL &kp N1    &kp N2    &kp N3    &kp STAR &trans 
                                &trans    &trans    &trans                        &trans    &trans    &trans

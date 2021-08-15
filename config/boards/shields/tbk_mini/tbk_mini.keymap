@@ -26,10 +26,10 @@
 
         default_layer {
             bindings = <
-    &kp TAB       &kp Q       &kp W      &kp E     &kp R          &kp T           &kp Y     &kp U     &kp I     &kp O     &kp P           &kp BSPC
-    &hm LCTRL ESC &hm LSHFT A &hm LALT S &lt NAV D     &lt SYMB F     &kp G       &kp H     &kp J     &kp K     &kp L     &hm RSHFT ENTER &kp C_VOL_UP
-    &hm LSHFT ESC &kp Z       &kp X      &kp C         &lt NUM V      &kp B       &kp N     &kp M     &kp COMMA &kp DOT   &none           &kp C_VOL_DN
-                                         &hm LSHFT ESC &hm LGUI ENTER &kp C_PP    &lt NUM SEMI &lt SYMB SPC &kp C_NEXT
+    &kp C_PP     &kp Q       &kp W      &kp E     &kp R          &kp T           &kp Y     &kp U     &kp I     &kp O     &kp P           &kp BSPC
+    &kp C_NEXT   &hm LCTRL A &hm LALT S &lt NAV D     &lt SYMB F     &kp G       &kp H     &kp J     &kp K     &kp L     &hm RSHFT ENTER &kp C_VOL_UP
+    &kp C_PREV   &kp Z       &kp X      &kp C         &lt NUM V      &kp B       &kp N     &kp M     &kp COMMA &kp DOT   &kp C_MUTE      &kp C_VOL_DN
+                                        &hm LSHFT ESC &hm LGUI ENTER &kp DEL    &lt BLUE BSPC &lt NUM SEMI &lt SYMB SPC 
             >;
         };
 
@@ -44,16 +44,16 @@
 
         navi {
             bindings = <
-    &trans &none     &none     &none     &none     &trans                        &trans    &kp DEL   &kp BSPC  &none     &none  &trans 
+    &trans &none     &none     &none     &none     &trans                        &trans    &none     &kp DEL   &none     &none  &trans 
     &trans &kp LSHFT &kp GRAVE &none     &kp TAB   &none                         &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans 
-    &trans &none     &none     &none     &none     &none                         &none     &none     &none     &none     &trans &trans 
+    &trans &none     &none     &none     &none     &none                         &none     &none     &kp BSPC  &none     &trans &trans 
                                &trans    &trans    &trans                        &trans    &trans    &trans
             >;
         };
 
         numbers {
             bindings = <
-    &trans &none     &kp N7    &kp N8    &kp N9    &kp N0                        &none     &kp N7    &kp N8    &kp N9    &kp N0   &trans 
+    &trans &none     &kp N7    &kp N8    &kp N9    &kp N0                        &kp DOT   &kp N7    &kp N8    &kp N9    &kp N0   &trans 
     &trans &none     &kp N3    &kp N4    &kp N5    &none                         &kp MINUS &kp N4    &kp N5    &kp N6    &kp FSLH &trans 
     &trans &none     &kp N1    &kp N2    &kp N3    &none                         &kp EQUAL &kp N1    &kp N2    &kp N3    &kp STAR &trans 
                                &trans    &trans    &trans                        &trans    &trans    &trans
