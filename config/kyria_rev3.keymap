@@ -31,7 +31,6 @@
 };
  */
 / {
-
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
@@ -43,7 +42,6 @@
             bindings = <&kp>, <&kp>;
         };
     };
-/ {
     keymap {
         compatible = "zmk,keymap";
 
