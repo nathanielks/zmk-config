@@ -8,6 +8,21 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
+// None/Trans
+#define t____ &none
+#define t____ &trans
+
+#define DEFAULT 0
+#define SYMB    1
+#define NAV     2
+#define NUM     3
+#define BLUE    4
+#
+// Encoders
+&sensors        { triggers-per-rotation = <30>; };
+&left_encoder   { steps = <60>; };
+&right_encoder  { steps = <60>; };
+
 /* Uncomment this block if using RGB
 &led_strip {
     chain-length = <6>;
@@ -15,40 +30,92 @@
     // chain-length = <25>; // Uncomment if using only per-key LEDs.
 };
  */
+/ {
 
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
 / {
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-            // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | LAYER 1 | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-            //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
-            bindings = <
-            &kp ESC   &kp Q &kp W &kp E &kp R &kp T                                                  &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-            &kp TAB   &kp A &kp S &kp D &kp F &kp G                                                  &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-            &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp LSHFT            &mo 1   &kp LSHFT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-                                  &mo 1    &kp DEL &kp RET &kp SPACE &kp ESC       &kp RET &kp SPACE &kp TAB &kp BSPC &kp RALT
-            >;
+bindings = <
+&kp ESC    &kp Q        &kp W       &kp E      &kp R       &kp T                                                                       &kp Y        &kp U  &kp I      &kp O    &kp P            &kp BSPC
+&kp TAB    &hm LCTRL A  &hm LALT S  &lt NAV D  &lt SYMB F  &kp G                                                                       &kp H        &kp J  &kp K      &kp L    &hm RSHFT ENTER  &kp SQT
+&kp LSHFT  &kp Z        &kp X       &kp C      &kp V       &kp B          &kp LSHFT       &kp C_PP         &kp C_NEXT     &kp LSHFT    &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH         &kp RCTRL
+                                    t____      t____       &hm LSHFT ESC  &hm LGUI ENTER  &kp DEL          &lt BLUE BSPC  &lt NUM SEMI &lt SYMB SPC t____  t____
+>;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
-        function_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |       |      |BT_CLR|BTSEL0|BTSEL1|BTSEL2|                                         |      |      |      |      |      |      |
-            // |       |      |      |BTSEL3|BTSEL4|      |                                         |      |      |      |      |      |      |
-            // |       |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-            //                       |      |      |      |      |      |      |      |      |      |      |      |      |
-            bindings = <
-            &trans &trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2              &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans     &bt BT_SEL 3 &bt BT_SEL 4 &kp A                     &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans &trans &trans &trans
-                                 &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans
-            >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        symbols {
+            bindings = <
+t____  t____  &kp EXCL  &kp AMPS   &kp STAR   &kp CARET                                  &kp GRAVE  &kp FSLH  &kp LPAR  &kp RPAR  t____  t____ 
+t____  t____  &kp AT    &kp MINUS  &kp EQUAL  t____                                      t____      &kp SQT   &kp LBKT  &kp RBKT  t____  t____
+t____  t____  &kp HASH  &kp PRCNT  &kp DLLR   t____                                      t____      &kp BSLH  t____     t____     t____  t____
+                        t____      t____      t____      t____  t____      t____  t____  t____      t____     t____
+            >;
+sensor-bindings = <&inc_dec_kp t____ t____ &inc_dec_kp t____ t____>;
+        };
+
+        navi {
+            bindings = <
+t____  t____      t____      t____  t____    t____                                  t____     t____     &kp DEL   t____      t____  t____ 
+t____  &kp LSHFT  &kp GRAVE  t____  &kp TAB  t____                                  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  t____  t____ 
+t____  t____      t____      t____  t____    t____                                  t____     t____     &kp BSPC  t____      t____  t____ 
+                             t____  t____    t____  t____  t____      t____  t____  t____     t____     t____
+            >;
+sensor-bindings = <&inc_dec_kp t____ t____ &inc_dec_kp t____ t____>;
+        };
+
+        numbers {
+            bindings = <
+t____  t____  &kp N7  &kp N8  &kp N9  &kp N0                                  &kp DOT    &kp N7  &kp N8  &kp N9  &kp N0    t____ 
+t____  t____  &kp N3  &kp N4  &kp N5  t____                                   &kp MINUS  &kp N4  &kp N5  &kp N6  &kp FSLH  t____ 
+t____  t____  &kp N1  &kp N2  &kp N3  t____                                   &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp STAR  t____ 
+                      t____   t____   t____   t____  t____      t____  t____  t____      t____   t____
+            >;
+sensor-bindings = <&inc_dec_kp t____ t____ &inc_dec_kp t____ t____>;
+        };
+
+        blue {
+// I added a zero key because Zephyr won't compile with a only-transparent layer
+            bindings = <
+t____  t____  t____  t____  t____  t____                                  &bt BT_CLR    t____         t____         t____         t____         t____
+t____  t____  t____  t____  t____  t____                                  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  t____
+t____  t____  t____  t____  t____  t____                                  t____         t____         t____         t____         t____         t____
+                     t____  t____  t____  t____  t____      t____  t____  t____         t____         t____
+            >;
+sensor-bindings = <&inc_dec_kp t____ t____ &inc_dec_kp t____ t____>;
+        };
+
+        // This layer is for easier copy/paste when creating new keymaps, so you have transparent keys already added
+        trans {
+// -------------------------------------------------------------------------------------------------------------------------
+// |         |         |         |         |         |                   |         |         |         |         |         |
+// |         |         |         |         |         |                   |         |         |         |         |         |
+// |         |         |         |         |         |                   |         |         |         |         |         |
+//           |         |         |                                                           |         |         |
+//                               |         |         |                   |         |         |
+//                                         |         |         |         |         |
+//                                         |         |         |         |         |
+// I added a zero key because Zephyr won't compile with a only-transparent layer
+            bindings = <
+t____  &kp KP_N0 t____  t____  t____  t____                                  t____  t____  t____  t____  t____  t____ 
+t____  t____     t____  t____  t____  t____                                  t____  t____  t____  t____  t____  t____ 
+t____  t____     t____  t____  t____  t____                                  t____  t____  t____  t____  t____  t____ 
+                        t____  t____  t____  t____  t____      t____  t____  t____  t____  t____
+            >;
         };
     };
 };
