@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/keys.h>
 
 // None/Trans
-#define t____ &none
+#define _____ &none
 #define t____ &trans
 
 #define DEFAULT 0
