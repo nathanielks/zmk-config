@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 PRISTINE="${1}"
 PRISTINE_FLAGS=
 if [[ -n "$PRISTINE" ]]; then
@@ -7,6 +9,6 @@ if [[ -n "$PRISTINE" ]]; then
 fi
 
 pushd /workspaces/zmk/app
-west build $PRISTINE_FLAGS -d build/left -b nice_nano_v2 -- -DSHIELD=kyria_left -DZMK_CONFIG=/workspaces/zmk-config/config
-west build $PRISTINE_FLAGS -d build/right -b nice_nano_v2 -- -DSHIELD=kyria_right -DZMK_CONFIG=/workspaces/zmk-config/config
+west build $PRISTINE_FLAGS -d build/left -b nice_nano_v2 -- -DSHIELD=kyria_rev3_left -DZMK_CONFIG=/workspaces/zmk-config/config
+west build $PRISTINE_FLAGS -d build/right -b nice_nano_v2 -- -DSHIELD=kyria_rev3_right -DZMK_CONFIG=/workspaces/zmk-config/config
 popd
