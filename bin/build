@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 
-SIDE="${1:-'left'}"
-PRISTINE="${2}"
+PRISTINE="${1}"
 PRISTINE_FLAGS=
 if [[ -n "$PRISTINE" ]]; then
   PRISTINE_FLAGS="-p"
 fi
-# INIT="${2}"
-# INIT_FLAGS=
-# if [[ -n "$INIT" ]]; then
-#   INIT_FLAGS=""
-# fi
 
 pushd /workspaces/zmk/app
-west build $PRISTINE_FLAGS -d "build/$SIDE" -b nice_nano_v2 -- -DSHIELD=kyria_$SIDE -DZMK_CONFIG=/workspaces/zmk-config/config
+west build $PRISTINE_FLAGS -d build/left -b nice_nano_v2 -- -DSHIELD=kyria_left -DZMK_CONFIG=/workspaces/zmk-config/config
+west build $PRISTINE_FLAGS -d build/right -b nice_nano_v2 -- -DSHIELD=kyria_right -DZMK_CONFIG=/workspaces/zmk-config/config
 popd
